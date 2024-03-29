@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="Button"
+            android:gravity="center"
+            android:background="@color/white"
+            android:drawableStart="@drawable/arrow_back_24"
+            android:padding="@dimen/element_padding_xs"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/element_padding_md"
+            android:background="@color/background"
+            android:columnCount="4"
+            android:orientation="horizontal"
+            android:alignmentMode="alignMargins"
+            android:useDefaultMargins="true">
+
+            <TextView
+                android:textSize="@dimen/element_font_size_md"
+                android:textColor="@color/element_text_color_2"
+                android:layout_marginBottom="8dp"
+                android:text="按钮类型"
+                android:layout_columnSpan="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="主要按钮"
+                android:onClick="clickButton"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="success"
+                app:buttonText="成功按钮"
+                android:onClick="clickButton"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="warning"
+                app:buttonText="警告按钮"
+                android:onClick="clickButton"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="danger"
+                app:buttonText="危险按钮"
+                android:onClick="clickButton"
+                />
+
+            <TextView
+                android:textSize="@dimen/element_font_size_md"
+                android:textColor="@color/element_text_color_2"
+                android:layout_marginBottom="8dp"
+                android:text="朴素按钮"
+                android:layout_columnSpan="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="主要按钮"
+                app:buttonPlain="true"
+                android:onClick="clickButton"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="success"
+                app:buttonText="成功按钮"
+                app:buttonPlain="true"
+                android:onClick="clickButton"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="warning"
+                app:buttonText="警告按钮"
+                app:buttonPlain="true"
+                android:onClick="clickButton"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="danger"
+                app:buttonText="危险按钮"
+                app:buttonPlain="true"
+                android:onClick="clickButton"
+                />
+
+
+            <TextView
+                android:textSize="@dimen/element_font_size_md"
+                android:textColor="@color/element_text_color_2"
+                android:layout_marginBottom="8dp"
+                android:text="按钮尺寸"
+                android:layout_columnSpan="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="迷你按钮"
+                app:buttonSize="mini"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="小型按钮"
+                app:buttonSize="small"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="普通按钮"
+                app:buttonSize="normal"
+
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="大号按钮"
+                app:buttonSize="large"
+                />
+
+
+            <TextView
+                android:textSize="@dimen/element_font_size_md"
+                android:textColor="@color/element_text_color_2"
+                android:layout_marginBottom="8dp"
+                android:text="按钮形状"
+                android:layout_columnSpan="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="默认形状"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="方形按钮"
+                app:buttonSquare="true"
+                />
+
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="圆形"
+                app:buttonRound="true"
+                />
+
+
+            <TextView
+                android:textSize="@dimen/element_font_size_md"
+                android:textColor="@color/element_text_color_2"
+                android:layout_marginBottom="8dp"
+                android:text="自定义颜色"
+                android:layout_columnSpan="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="主要按钮"
+                app:buttonColor="#FF00FF"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="success"
+                app:buttonText="成功按钮"
+                app:buttonColor="#0000FF"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="warning"
+                app:buttonText="警告按钮"
+                app:buttonColor="#00FFFF"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="danger"
+                app:buttonText="危险按钮"
+                />
+
+            <TextView
+                android:textSize="@dimen/element_font_size_md"
+                android:textColor="@color/element_text_color_2"
+                android:layout_marginBottom="8dp"
+                android:text="禁用状态"
+                android:layout_columnSpan="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.bigoat.element.button.ButtonView
+                android:tag="xx"
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="禁用状态"
+                app:buttonDisabled="true"
+                />
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="success"
+                app:buttonText="禁用状态"
+                app:buttonDisabled="true"
+                />
+
+            <TextView
+                android:textSize="@dimen/element_font_size_md"
+                android:textColor="@color/element_text_color_2"
+                android:layout_marginBottom="8dp"
+                android:text="插槽使用"
+                android:layout_columnSpan="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.bigoat.element.button.ButtonView
+                android:tag="xx"
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="primary"
+                app:buttonText="禁用状态">
+
+                <TextView
+                    android:text="我是插槽"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </com.bigoat.element.button.ButtonView>
+
+            <com.bigoat.element.button.ButtonView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:buttonType="success"
+                app:buttonText="禁用状态"
+                />
+
+        </GridLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>
+

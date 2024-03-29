@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ButtonView">
+        <attr name="buttonType" format="enum">
+            <enum name="primary" value="0"/>
+            <enum name="success" value="1"/>
+            <enum name="warning" value="2"/>
+            <enum name="danger" value="3"/>
+        </attr>
+
+        <attr name="buttonPlain" format="boolean"/>
+        <attr name="buttonHairline" format="boolean"/>
+        <attr name="buttonLoading" format="boolean"/>
+        <attr name="buttonLoadingText" format="string"/>
+        <attr name="buttonIcon" format="reference"/>
+        <attr name="buttonSize" format="enum">
+            <enum name="mini" value="0"/>
+            <enum name="small" value="1"/>
+            <enum name="normal" value="2"/>
+            <enum name="large" value="3"/>
+        </attr>
+        <attr name="buttonText" format="string|reference"/>
+
+        <attr name="buttonColor" format="color|reference|string"/>
+        <attr name="buttonSquare" format="boolean"/>
+        <attr name="buttonRound" format="boolean"/>
+        <attr name="buttonDisabled" format="boolean"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="NavBarView">
+        <attr name="backText" format="string|reference" />
+        <attr name="backColor" format="color|reference" />
+        <attr name="backSize" format="dimension|reference" />
+        <attr name="titleText" format="string|reference" />
+        <attr name="titleColor" format="color|reference" />
+        <attr name="titleSize" format="dimension|reference" />
+        <attr name="actionText" format="string|reference" />
+        <attr name="actionColor" format="color|reference" />
+        <attr name="actionSize" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SelectView">
+        <attr name="placeholder" format="string|reference" />
+        <attr name="placeholderColor" format="color|reference" />
+        <attr name="fontSize" format="dimension|reference" />
+        <attr name="arrow" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SearchView">
+        <attr name="searchFontColor" format="color|reference" />
+        <attr name="searchFontSize" format="dimension|reference" />
+        <attr name="searchPlaceholder" format="string|reference" />
+        <attr name="searchPlaceholderColor" format="color|reference" />
+        <attr name="searchIconShow" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CellView">
+        <attr name="cellIcon" format="reference" />
+        <attr name="cellIconSize" format="integer" />
+        <attr name="cellTitle" format="string|reference" />
+        <attr name="cellTitleSize" format="dimension|reference" />
+        <attr name="cellTitleColor" format="color|reference" />
+        <attr name="cellLabel" format="string|reference" />
+        <attr name="cellLabelSize" format="dimension|reference" />
+        <attr name="cellLabelColor" format="color|reference" />
+        <attr name="cellLabelIcon" format="reference" />
+        <attr name="cellValue" format="string|reference" />
+        <attr name="cellValueSize" format="dimension|reference" />
+        <attr name="cellValueColor" format="color|reference" />
+        <attr name="cellArrow" format="reference" />
+        <attr name="cellLink" format="boolean" />
+    </declare-styleable>
+
+</resources>
