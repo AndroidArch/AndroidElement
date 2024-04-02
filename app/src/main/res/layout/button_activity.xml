@@ -36,7 +36,7 @@
             <TextView
                 android:textSize="@dimen/element_font_size_md"
                 android:textColor="@color/element_text_color_2"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="@dimen/element_line_height_lg"
                 android:text="按钮类型"
                 android:layout_columnSpan="4"
                 android:layout_width="match_parent"
@@ -298,24 +298,32 @@
                 android:layout_width="0dp"
                 android:layout_columnWeight="1"
                 android:layout_height="wrap_content"
-                app:buttonType="primary"
-                app:buttonText="禁用状态">
+                android:onClick="clickButton"
+                app:buttonType="primary">
 
                 <TextView
                     android:text="我是插槽"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="30dp"/>
 
             </com.bigoat.element.button.ButtonView>
 
             <com.bigoat.element.button.ButtonView
                 android:layout_width="0dp"
                 android:layout_columnWeight="1"
-                android:layout_height="wrap_content"
-                app:buttonType="success"
-                app:buttonText="禁用状态"
-                />
+                android:onClick="clickButton"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/icon"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="30dp"/>
+
+            </com.bigoat.element.button.ButtonView>
 
         </GridLayout>
 

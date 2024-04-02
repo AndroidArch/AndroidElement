@@ -5,7 +5,6 @@ package com.bigoat.element.button;
 import static com.bigoat.element.ViewUtils.darkenColor;
 import static com.bigoat.element.ViewUtils.dp2px;
 import static com.bigoat.element.ViewUtils.getTypedArrayColor;
-import static com.bigoat.element.ViewUtils.px2dp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -33,19 +32,50 @@ public class ButtonView extends CardView {
     private static final float DARKENING_RATIO = 0.8f;
     private static final int ROUNDED_CORNERS = 4;
 
+    // 插槽
+    public enum Slots {
+        DEF, ICON, LOADING
+    }
+
+    // 按钮类型
     public enum Type {
         PRIMARY, SUCCESS, WARNING, DANGER
     }
 
+    // 按钮大小
     public enum Size {
         MINI, SMALL, NORMAL, LARGE
     }
 
-    private TextView textView;
-    private GradientDrawable normalDrawable;
-    private GradientDrawable pressedDrawable;
+    // 属性
+    private int type;
+    // 是否朴素
+    private boolean plain;
+    // 是否细边框
+    private boolean hairline;
+    // 是否禁用
+    private boolean disabled;
+    // 是否加载中
+    private boolean loading;
+    // 加载中文本
+    private String loadingText;
+    // 图标
+    private Drawable icon;
+    // 是否正方形
+    private boolean square;
+    // 是否圆形
+    private boolean round;
+    // 大小
+    private int size;
+    // 自定义颜色
+    private int color;
 
-    public OnClickListener onClickListener;
+    // 文本控件
+    private TextView textView;
+    // 正常背景
+    private GradientDrawable normalDrawable;
+    // 按下背景
+    private GradientDrawable pressedDrawable;
 
     public ButtonView(Context context) {
         super(context);
@@ -65,17 +95,16 @@ public class ButtonView extends CardView {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        // TODO 插槽
-        /*
-        List<View> views = new ArrayList<>();
-        for (int i = 0; i < getChildCount(); i++) {
-            View child = getChildAt(i);
+
+        if (getChildCount()>1) {
+            removeView(textView);
         }
-         */
+
     }
 
     private void init(Context context, AttributeSet attrs) {
         textView = new TextView(context);
+        textView.setTag("default");
         textView.setGravity(Gravity.CENTER);
         LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         textView.setLayoutParams(layoutParams);
@@ -90,18 +119,6 @@ public class ButtonView extends CardView {
             typedArray.recycle();
         }
     }
-
-    private int type;
-    private boolean plain;
-    private boolean hairline;
-    private boolean disabled;
-    private boolean loading;
-    private String loadingText;
-    private Drawable icon;
-    private boolean square;
-    private boolean round;
-    private int size;
-    private int color;
 
     @SuppressLint("ResourceAsColor")
     private void initAttrs(TypedArray typedArray) {

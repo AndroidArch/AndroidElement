@@ -8,7 +8,6 @@
             <enum name="warning" value="2"/>
             <enum name="danger" value="3"/>
         </attr>
-
         <attr name="buttonPlain" format="boolean"/>
         <attr name="buttonHairline" format="boolean"/>
         <attr name="buttonLoading" format="boolean"/>
@@ -21,7 +20,6 @@
             <enum name="large" value="3"/>
         </attr>
         <attr name="buttonText" format="string|reference"/>
-
         <attr name="buttonColor" format="color|reference|string"/>
         <attr name="buttonSquare" format="boolean"/>
         <attr name="buttonRound" format="boolean"/>
