@@ -27,6 +27,41 @@
     </declare-styleable>
 
 
+    <declare-styleable name="CellView">
+        <attr name="cellTitle" format="string|reference" />
+        <attr name="cellValue" format="string|reference" />
+        <attr name="cellLabel" format="string|reference" />
+        <attr name="cellSize" format="enum">
+            <enum name="mini" value="0"/>
+            <enum name="small" value="1"/>
+            <enum name="normal" value="2"/>
+            <enum name="large" value="3"/>
+        </attr>
+        <attr name="cellIcon" format="reference" />
+        <attr name="cellBorder" format="boolean" />
+        <attr name="cellClickable" format="boolean" />
+        <attr name="cellIsLink" format="boolean" />
+        <attr name="cellRequired" format="boolean" />
+        <attr name="cellCenter" format="boolean" />
+        <attr name="cellArrowDirection" format="enum">
+            <enum name="up" value="0"/>
+            <enum name="down" value="1"/>
+            <enum name="left" value="2"/>
+            <enum name="right" value="3"/>
+        </attr>
+        <attr name="cellArrow" format="reference" />
+
+        <attr name="cellIconSize" format="integer" />
+        <attr name="cellTitleSize" format="dimension|reference" />
+        <attr name="cellTitleColor" format="color|reference" />
+        <attr name="cellLabelSize" format="dimension|reference" />
+        <attr name="cellLabelColor" format="color|reference" />
+        <attr name="cellLabelIcon" format="reference" />
+        <attr name="cellValueSize" format="dimension|reference" />
+        <attr name="cellValueColor" format="color|reference" />
+    </declare-styleable>
+
+
     <declare-styleable name="NavBarView">
         <attr name="backText" format="string|reference" />
         <attr name="backColor" format="color|reference" />
@@ -54,21 +89,6 @@
         <attr name="searchIconShow" format="boolean" />
     </declare-styleable>
 
-    <declare-styleable name="CellView">
-        <attr name="cellIcon" format="reference" />
-        <attr name="cellIconSize" format="integer" />
-        <attr name="cellTitle" format="string|reference" />
-        <attr name="cellTitleSize" format="dimension|reference" />
-        <attr name="cellTitleColor" format="color|reference" />
-        <attr name="cellLabel" format="string|reference" />
-        <attr name="cellLabelSize" format="dimension|reference" />
-        <attr name="cellLabelColor" format="color|reference" />
-        <attr name="cellLabelIcon" format="reference" />
-        <attr name="cellValue" format="string|reference" />
-        <attr name="cellValueSize" format="dimension|reference" />
-        <attr name="cellValueColor" format="color|reference" />
-        <attr name="cellArrow" format="reference" />
-        <attr name="cellLink" format="boolean" />
-    </declare-styleable>
+
 
 </resources>
