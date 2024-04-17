@@ -56,6 +56,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:text="Image 图片"
+            android:gravity="start"
+            android:onClick="jumpToImageActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </ScrollView>

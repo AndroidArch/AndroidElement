@@ -61,6 +61,15 @@
         <attr name="cellValueColor" format="color|reference" />
     </declare-styleable>
 
+    <declare-styleable name="ImageView2">
+        <attr name="imageSrc" format="string|reference|color" />
+        <attr name="imageRound" format="boolean" />
+        <attr name="imageRadius" format="integer" />
+        <attr name="imageError" format="reference" />
+        <attr name="imageLoading" format="reference" />
+
+    </declare-styleable>
+
 
     <declare-styleable name="NavBarView">
         <attr name="backText" format="string|reference" />
