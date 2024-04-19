@@ -23,6 +23,7 @@
         </activity>
         <activity android:name="com.bigoat.element.sample.ButtonActivity" />
         <activity android:name="com.bigoat.element.sample.ImageActivity" />
+        <activity android:name="com.bigoat.element.sample.SidebarActivity" />
     </application>
 
 </manifest>

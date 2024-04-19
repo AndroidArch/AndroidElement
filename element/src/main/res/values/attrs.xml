@@ -73,7 +73,12 @@
         <attr name="imageCornerBottomLeft" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="SidebarView">
+        <attr name="sidebarItem" format="reference" />
+    </declare-styleable>
 
+
+    <!--    -->
     <declare-styleable name="NavBarView">
         <attr name="backText" format="string|reference" />
         <attr name="backColor" format="color|reference" />
