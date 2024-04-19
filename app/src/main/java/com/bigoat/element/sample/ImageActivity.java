@@ -6,8 +6,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.MutableLiveData;
 
 import com.bigoat.element.button.ButtonView;
+import com.bigoat.element.sample.databinding.ImageActivityBinding;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -16,14 +19,15 @@ public class ImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.image_activity);
+        ImageActivityBinding bind = ImageActivityBinding.inflate(getLayoutInflater());
+        bind.setLifecycleOwner(this);
+        setContentView(bind.getRoot());
+
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-//        ImageView imageView = findViewById(R.id.image);
-//        Glide.with(this)
-//                .load("https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg")
-//                .apply(RequestOptions.circleCropTransform())
-//                .into(imageView);
+        ImageSrc imageSrc = new ImageSrc("https://www.baidu.com/img/flexible/logo/pc/result.png");
+
+        bind.setImage(imageSrc);
 
     }
 

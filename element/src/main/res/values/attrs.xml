@@ -63,11 +63,14 @@
 
     <declare-styleable name="ImageView2">
         <attr name="imageSrc" format="string|reference|color" />
-        <attr name="imageRound" format="boolean" />
-        <attr name="imageRadius" format="integer" />
+        <attr name="imageHolder" format="reference" />
         <attr name="imageError" format="reference" />
-        <attr name="imageLoading" format="reference" />
-
+        <attr name="imageRound" format="boolean" />
+        <attr name="imageCorner" format="integer" />
+        <attr name="imageCornerTopLeft" format="integer" />
+        <attr name="imageCornerTopRight" format="integer" />
+        <attr name="imageCornerBottomRight" format="integer" />
+        <attr name="imageCornerBottomLeft" format="integer" />
     </declare-styleable>
 
 

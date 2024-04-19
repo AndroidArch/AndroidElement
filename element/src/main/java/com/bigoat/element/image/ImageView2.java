@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
@@ -21,6 +22,7 @@ import com.bigoat.element.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -31,6 +33,16 @@ import java.net.URL;
 
 
 public class ImageView2 extends AppCompatImageView {
+
+    private String imageSrc;
+    private Drawable imageHolder;
+    private Drawable imageError;
+    private boolean imageRound;
+    private int imageCorner;
+    private int imageCornerTopLeft;
+    private int imageCornerTopRight;
+    private int imageCornerBottomRight;
+    private int imageCornerBottomLeft;
 
     public ImageView2(Context context) {
         super(context);
@@ -56,59 +68,35 @@ public class ImageView2 extends AppCompatImageView {
         }
     }
 
-    private String imageSrc;
-    private boolean imageRound;
-    private int imageRadius;
-    private Drawable imageError;
-    private Drawable imageLoading;
-
-    @SuppressLint("ResourceAsColor")
     private void initAttrs(TypedArray typedArray) {
 
         imageSrc = typedArray.getString(R.styleable.ImageView2_imageSrc);
-        imageRound = typedArray.getBoolean(R.styleable.ImageView2_imageRound, false);
-        imageRadius = typedArray.getInt(R.styleable.ImageView2_imageRadius, -1);
+        imageHolder = typedArray.getDrawable(R.styleable.ImageView2_imageHolder);
         imageError = typedArray.getDrawable(R.styleable.ImageView2_imageError);
-        imageLoading = typedArray.getDrawable(R.styleable.ImageView2_imageLoading);
+        imageRound = typedArray.getBoolean(R.styleable.ImageView2_imageRound, false);
+        imageCorner = typedArray.getInt(R.styleable.ImageView2_imageCorner, -1);
+        imageCornerTopLeft = typedArray.getInt(R.styleable.ImageView2_imageCornerTopLeft, -1);
+        imageCornerTopRight = typedArray.getInt(R.styleable.ImageView2_imageCornerTopRight, -1);
+        imageCornerBottomRight = typedArray.getInt(R.styleable.ImageView2_imageCornerBottomRight, -1);
+        imageCornerBottomLeft = typedArray.getInt(R.styleable.ImageView2_imageCornerBottomLeft, -1);
 
         int index = R.styleable.ImageView2_imageSrc;
         String imageSrc = typedArray.getString(index);
         if (imageSrc != null) {
             if (imageSrc.startsWith("#")) {
                 int colorValue = typedArray.getColor(index, -1);
-                Log.d("TTT",  "colorValue " + colorValue);
-                setBackgroundColor(colorValue);
+                if (colorValue != -1) {
+                    Drawable drawable = new ColorDrawable(colorValue);
+                    load(this, drawable, imageHolder, imageError, imageRound, imageCorner, imageCornerTopLeft, imageCornerTopRight, imageCornerBottomRight, imageCornerBottomLeft);
+                }
 
             } else if (imageSrc.startsWith("res/")) {
                 Drawable drawable = typedArray.getDrawable(index);
-                Log.d("TTT",  "drawable " + drawable);
-                setImageDrawable(drawable);
-
+                load(this, drawable, imageHolder, imageError, imageRound, imageCorner, imageCornerTopLeft, imageCornerTopRight, imageCornerBottomRight, imageCornerBottomLeft);
             } else {
-
-                RequestOptions options = new RequestOptions();
-
-                if (imageRadius>0) {
-                    options.apply(RequestOptions.bitmapTransform(new RoundedCorners(imageRadius)));
-                }
-
-                if (imageRound) {
-                    options.circleCrop();
-                }
-
-                Glide.with(this)
-                        .load(imageSrc)
-                        .apply(options)
-                        .error(imageError)
-                        .into(this);
-                Log.d("TTT",  "other " + imageSrc);
+                load(this, imageSrc, imageHolder, imageError, imageRound, imageCorner, imageCornerTopLeft, imageCornerTopRight, imageCornerBottomRight, imageCornerBottomLeft);
             }
         }
-    }
-
-    @SuppressLint("CheckResult")
-    private void processImageSrc(TypedArray typedArray, int index, boolean imageRound, int imageRadius) {
-
     }
 
     @SuppressLint("CheckResult")
@@ -117,92 +105,50 @@ public class ImageView2 extends AppCompatImageView {
             "imageHolder", // 占位图
             "imageError", // 错误图
             "imageRound", // 圆形图片
-            "imageGray", // 图片黑白
-            "imageBlur", // 图片模糊
-            "imageCornersRadius", // 圆角大小
-            "imageCornersTopLeftRadius", // 圆角左上角大小
-            "imageCornersTopRightRadius", // 圆角右上角大小
-            "imageCornersBottomRightRadius", // 圆角左下角大小
-            "imageCornersBottomLeftRadius" // 圆角右下角大小
+            "imageCorner", // 圆角大小
+            "imageCornerTopLeft", // 圆角左上角大小
+            "imageCornerTopRight", // 圆角右上角大小
+            "imageCornerBottomRight", // 圆角左下角大小
+            "imageCornerBottomLeft" // 圆角右下角大小
     }, requireAll = false)
     public static void load(@NotNull ImageView view,
                             Object src,
                             Drawable holder,
                             Drawable error,
                             boolean round,
-                            boolean gray,
-                            int blur,
-                            int cornersRadius,
-                            int cornersTopLeftRadius,
-                            int cornersTopRightRadius,
-                            int cornersBottomRightRadius,
-                            int cornersBottomLeftRadius) {
-
-
+                            int imageCorner,
+                            int imageCornerTopLeft,
+                            int imageCornerTopRight,
+                            int imageCornerBottomRight,
+                            int imageCornerBottomLeft) {
         RequestOptions options = new RequestOptions();
         if (holder != null) options.placeholder(holder);
         if (error != null) options.error(error);
 
-//        MultiTransformation<Bitmap> transformation = new MultiTransformation<Bitmap>(new RoundedCornersTransformation(0, 0, RoundedCornersTransformation.CornerType.ALL));
-//
-//        if (round) {
-//            transformation = new MultiTransformation<Bitmap>(transformation, new CropCircleTransformation());
-//        }
-//
-//        if (gray) {
-//            transformation = new MultiTransformation<Bitmap>(transformation, new GrayscaleTransformation());
-//        }
-//
-//        if (blur != 0) {
-//            transformation = new MultiTransformation<Bitmap>(transformation, new BlurTransformation(blur));
-//        }
-//
-//        if (!round) {
-//            if (cornersRadius != 0) {
-//                transformation = new MultiTransformation<Bitmap>(transformation, new RoundedCornersTransformation(cornersRadius, 0, RoundedCornersTransformation.CornerType.ALL));
-//            } else {
-//                if (cornersTopLeftRadius != 0) {
-//                    transformation = new MultiTransformation<Bitmap>(transformation, new RoundedCornersTransformation(cornersTopLeftRadius, 0, RoundedCornersTransformation.CornerType.TOP_LEFT));
-//                }
-//
-//                if (cornersTopRightRadius != 0) {
-//                    transformation = new MultiTransformation<Bitmap>(transformation, new RoundedCornersTransformation(cornersTopRightRadius, 0, RoundedCornersTransformation.CornerType.TOP_RIGHT));
-//
-//                }
-//                if (cornersBottomRightRadius != 0) {
-//                    transformation = new MultiTransformation<Bitmap>(transformation, new RoundedCornersTransformation(cornersBottomRightRadius, 0, RoundedCornersTransformation.CornerType.BOTTOM_LEFT));
-//
-//                }
-//                if (cornersBottomLeftRadius != 0) {
-//                    transformation = new MultiTransformation<Bitmap>(transformation, new RoundedCornersTransformation(cornersBottomLeftRadius, 0, RoundedCornersTransformation.CornerType.BOTTOM_RIGHT));
-//                }
-//
-//            }
-//        }
-//
-//        options.transform(transformation);
+        if (imageCornerBottomLeft > 0 || imageCornerBottomRight > 0 || imageCornerTopLeft > 0 || imageCornerTopRight > 0) {
+            options.transform(new GranularRoundedCorners(imageCornerTopLeft, imageCornerTopRight, imageCornerBottomRight, imageCornerBottomLeft));
+        }
+
+        if (imageCorner > 0) {
+            options.transform(new RoundedCorners(imageCorner));
+        }
+
+        if (round) {
+            options.circleCrop();
+        }
 
         load(view, src, options);
     }
 
+    public static void load(@NotNull ImageView view, Object src) {
+        load(view, src, null, null, false, 0, 0, 0, 0, 0);
+    }
+
+    public static void load(@NotNull ImageView view, Object src, Drawable error) {
+        load(view, src, null, error, false, 0, 0, 0, 0, 0);
+    }
     public static void load(@NotNull ImageView view, Object src, Drawable holder, Drawable error) {
-        load(view, src, holder, error, false, false, 0, 0, 0, 0, 0, 0);
-    }
-
-    public static void loadCornersRadius(@NotNull ImageView view, Object src, Drawable holder, Drawable error, int cornersRadius) {
-        load(view, src, holder, error, false, false, 0, cornersRadius, 0, 0, 0, 0);
-    }
-
-    public static void loadCornersRadius(@NotNull ImageView view, Object src, Drawable holder, Drawable error, int topLeftRadius, int topRightRadius, int bottomRightRadius, int bottomLeftRadius) {
-        load(view, src, holder, error, false, false, 0, 0, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius);
-    }
-
-    public static void loadBlur(@NotNull ImageView view, Object src, Drawable holder, Drawable error, int imageBlur) {
-        load(view, src, holder, error, false, false, imageBlur, 0, 0, 0, 0, 0);
-    }
-
-    public static void loadRound(@NotNull ImageView view, Object src, Drawable holder, Drawable error) {
-        load(view, src, holder, error, true, false, 0, 0, 0, 0, 0, 0);
+        load(view, src, holder, error, false, 0, 0, 0, 0, 0);
     }
 
     private static void load(ImageView view, Object src, RequestOptions options) {
@@ -228,7 +174,6 @@ public class ImageView2 extends AppCompatImageView {
             Integer integer = (Integer) src;
             Glide.with(view).load(integer).apply(options).into(view);
         } else {
-            // ILog.d("加载图片失败 !");
             Glide.with(view).load(src).apply(options).into(view);
         }
     }
