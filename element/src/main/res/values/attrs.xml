@@ -73,6 +73,16 @@
         <attr name="imageCornerBottomLeft" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="BackgroundView">
+        <attr name="backgroundColor" format="color" />
+        <attr name="backgroundRound" format="boolean" />
+        <attr name="backgroundCorner" format="integer" />
+        <attr name="backgroundCornerTopLeft" format="integer" />
+        <attr name="backgroundCornerTopRight" format="integer" />
+        <attr name="backgroundCornerBottomRight" format="integer" />
+        <attr name="backgroundCornerBottomLeft" format="integer" />
+    </declare-styleable>
+
     <declare-styleable name="SidebarView">
         <attr name="sidebarItem" format="reference" />
     </declare-styleable>
